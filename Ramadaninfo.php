@@ -52,13 +52,17 @@ class Ramadaninfo
      * @return bool
      */
     public function checkRamadan(){
+
         $tomorow = new \DateTime();
         $tomorow->add((new DateInterval('P1D')));
 
-        $sunset = date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 90, 1);
-        $sunrise = date_sunrise($tomorow->getTimestamp(), SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 90, 1);
-
         $now = new \DateTime();
+        if(date('H') < 12){
+            $now->sub((new DateInterval('P1D')));
+        }
+
+        $sunset = date_sunset($now->getTimestamp(), SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 90, 1);
+        $sunrise = date_sunrise($tomorow->getTimestamp(), SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 90, 1);
 
         if( ($now->getTimestamp() > $sunset) AND ($now->getTimestamp() < $sunrise) ){
             return true;
