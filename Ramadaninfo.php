@@ -55,8 +55,8 @@ class Ramadaninfo
     {
         $now = time();
 
-        $sunset = date_sunset($now, SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 90, 1);
-        $sunrise = date_sunrise($now, SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 90, 1);
+        $sunset = date_sunset($now, SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 104, 1);
+        $sunrise = date_sunrise($now, SUNFUNCS_RET_TIMESTAMP, 48.8564519, 2.3446371, 72, 1);
 
         if ($now < $sunrise) {
             return true;
